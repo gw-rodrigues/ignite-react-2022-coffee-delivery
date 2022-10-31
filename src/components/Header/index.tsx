@@ -6,7 +6,9 @@ import LogoImg from '../../assets/Logo.svg'
 export function Header() {
   return (
     <HeaderContainer>
-      <img src={LogoImg} alt="Coffee Cup - Coffee delivery" />
+      <a href="/">
+        <img src={LogoImg} alt="Coffee Cup - Coffee delivery" />
+      </a>
       <Navbar />
     </HeaderContainer>
   )
