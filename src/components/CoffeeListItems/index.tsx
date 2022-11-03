@@ -2,18 +2,27 @@ import { CoffeeListItemsContainer, TypeOfCoffeeList } from './styles'
 
 import tradicional from '../../assets/types/Americano.svg'
 import { CoffeeListItemsBuy } from './Buy'
+import { TCoffee } from '../../pages/Home'
 
-export function CoffeeListItems() {
+interface ICoffeeListItem {
+  coffee: TCoffee
+}
+
+export function CoffeeListItems({
+  coffee: { name, description, price, types, image },
+}: ICoffeeListItem) {
   return (
     <CoffeeListItemsContainer>
       <figure>
-        <img src={tradicional} alt="" />
+        <img src={`/assets/${image}`} alt="" />
       </figure>
       <TypeOfCoffeeList>
-        <li>Tradicional</li>
+        {types.map((type) => (
+          <li key={type}>{type}</li>
+        ))}
       </TypeOfCoffeeList>
-      <h3>Expresso Tradicional</h3>
-      <p>O tradicional café feito com água quente e grãos moídos</p>
+      <h3>{name}</h3>
+      <p>{description}</p>
       <CoffeeListItemsBuy />
     </CoffeeListItemsContainer>
   )
