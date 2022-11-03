@@ -15,4 +15,6 @@ export const CoffeeListContainer = styled.ul`
 
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 2rem;
 `
