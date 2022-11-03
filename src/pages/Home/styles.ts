@@ -7,14 +7,14 @@ export const MainContainer = styled.main`
 `
 
 export const CoffeeListContainer = styled.ul`
-  max-width: 1120px;
   width: 100%;
+  max-width: 1120px;
   margin: 2.125rem auto;
-
   list-style: none;
 
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+
   flex-wrap: wrap;
   gap: 2rem;
 `
