@@ -7,6 +7,8 @@ export const BuyContainer = styled.div`
   justify-content: center;
 
   gap: 1.4375rem;
+
+  margin: 0 1.5rem 1.25rem 1.5rem;
 `
 
 export const PriceContainer = styled.div`
