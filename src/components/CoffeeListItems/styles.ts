@@ -10,6 +10,8 @@ export const CoffeeListItemsContainer = styled.li`
   flex-direction: column;
   align-items: center;
 
+  margin-bottom: 0.5rem;
+
   figure {
     position: relative;
     width: 120px;
