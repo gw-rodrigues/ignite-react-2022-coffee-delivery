@@ -7,7 +7,7 @@ export const QuantitySelect = styled.div`
   gap: 0.25rem;
 
   width: 72px;
-  height: 38px;
+  height: 100%;
   border-radius: 6px;
   background: ${(props) => props.theme['gray-300']};
   overflow: hidden;
