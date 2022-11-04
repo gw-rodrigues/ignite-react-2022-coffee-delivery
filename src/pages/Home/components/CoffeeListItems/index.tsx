@@ -2,7 +2,7 @@ import { CoffeeListItemsContainer, TypeOfCoffeeList } from './styles'
 
 import tradicional from '../../assets/types/Americano.svg'
 import { CoffeeListItemsBuy } from './Buy'
-import { TCoffee } from '../../pages/Home'
+import { TCoffee } from '../..'
 
 interface ICoffeeListItem {
   coffee: TCoffee

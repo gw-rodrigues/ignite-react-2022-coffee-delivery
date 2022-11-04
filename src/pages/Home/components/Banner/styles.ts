@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import BannerBG from '../../assets/Banner-Background.svg'
+import BannerBG from '../../../../assets/Banner-Background.svg'
 
 export const BannerContainer = styled.div`
   width: 100%;

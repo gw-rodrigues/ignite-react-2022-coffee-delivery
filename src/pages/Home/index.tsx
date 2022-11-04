@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Banner } from '../../components/Banner'
-import { CoffeeListItems } from '../../components/CoffeeListItems'
+import { Banner } from './components/Banner'
+import { CoffeeListItems } from './components/CoffeeListItems'
 import { CoffeeListContainer, MainContainer } from './styles'
 
 export type TCoffee = {
