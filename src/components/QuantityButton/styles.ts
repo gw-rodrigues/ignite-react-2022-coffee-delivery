@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 
-
-
 export const QuantitySelect = styled.div`
   display: flex;
   align-items: center;
