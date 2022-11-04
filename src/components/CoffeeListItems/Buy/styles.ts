@@ -30,6 +30,9 @@ export const PriceContainer = styled.div`
 `
 
 export const ActionsContainer = styled.div`
+  width: 118px;
+  height: 38px;
+
   display: flex;
   align-items: center;
   justify-content: center;
