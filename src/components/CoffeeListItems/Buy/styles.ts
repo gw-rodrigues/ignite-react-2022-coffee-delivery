@@ -28,3 +28,31 @@ export const PriceContainer = styled.div`
     margin-left: 0.2rem;
   }
 `
+
+export const ActionsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.5rem;
+`
+
+export const BuyButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background: ${(props) => props.theme['purple-900']};
+
+  &:hover {
+    background: ${(props) => props.theme['purple-500']};
+  }
+
+  svg {
+    fill: ${(props) => props.theme.white};
+  }
+`
