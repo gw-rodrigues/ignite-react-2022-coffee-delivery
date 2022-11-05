@@ -90,9 +90,13 @@ export const GlobalStyle = createGlobalStyle`
     transition: background .2s, color .2s;
   }
 
-  button:hover {
+  button:disabled, button:hover {
     background: ${(props) => props.theme['gray-400']};
     color: ${(props) => props.theme['gray-800']};
+  }
+
+  button:disabled {
+    cursor:not-allowed;
   }
 
 `
