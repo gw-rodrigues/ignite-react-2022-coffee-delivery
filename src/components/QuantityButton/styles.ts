@@ -28,9 +28,13 @@ export const QuantitySelect = styled.div`
     border: none;
 
     &:hover {
-      //background: none;
       border: none;
       color: ${(props) => props.theme['purple-900']};
+    }
+
+    &:focus {
+      box-shadow: none;
+      background: ${(props) => props.theme['gray-400']};
     }
   }
 `
