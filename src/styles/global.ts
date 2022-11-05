@@ -68,10 +68,16 @@ export const GlobalStyle = createGlobalStyle`
  button {
     font-weight: 400;
     font-size: 0.75rem;
-    line-height: 1.6;
+    line-height: 1.7;
     text-transform: uppercase;
-    border: none;
+
     cursor: pointer;
+    
+    border: none;
+    border-radius: 6px;
+    padding: 0 0.5rem;
+    width: auto;
+    height: 32px;
 
     color: ${(props) => props.theme['gray-700']};
     background: ${(props) => props.theme['gray-300']};
@@ -79,20 +85,14 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
-
-    transition: background .2s;
-  }
-
-  button {
-    border-radius: 6px;
-    padding: 0 0.5rem;
-    width: auto;
-    height: 32px;
     gap: 0.25rem;
+    
+    transition: background .2s, color .2s;
   }
 
   button:hover {
     background: ${(props) => props.theme['gray-400']};
+    color: ${(props) => props.theme['gray-800']};
   }
 
 `
