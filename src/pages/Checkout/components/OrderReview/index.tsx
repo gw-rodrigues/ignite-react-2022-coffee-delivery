@@ -1,5 +1,10 @@
 import { Trash } from 'phosphor-react'
+import { useContext, useEffect, useState } from 'react'
 import { QuantityButton } from '../../../../components/QuantityButton'
+import { CartContext } from '../../../../contexts/cartContext'
+import { getCoffee } from '../../../../hooks/coffeeData'
+import { TCoffee } from '../../../Home'
+
 import {
   ActionsButtons,
   ActionsContainer,
@@ -12,40 +17,55 @@ import {
   TotalContainer,
 } from './styles'
 
+interface IOrderReview extends TCoffee {
+  orderedQuantity: number
+}
+
 export function OrderReview() {
+  const { cart, updateQuantityFromProduct, remProductFromCart } =
+    useContext(CartContext)
+
+  const [cartProducts, setCartProducts] = useState<IOrderReview[]>([])
+
+  useEffect(() => {
+    const products: IOrderReview[] = cart.map((item) => {
+      let product: any = getCoffee(item.id)
+      return {
+        ...product,
+        orderedQuantity: item.quantity,
+      }
+    })
+    setCartProducts(products)
+  }, [cart])
+
   return (
     <OrderContainer>
       <h3>Cafés selecionados</h3>
       <OrderItems>
-        <OrderItem>
-          <img src="/assets/Americano.svg" alt="Americano" />
-          <ActionsContainer>
-            <p>Expresso Tradicional</p>
-            <ActionsButtons>
-              <QuantityButton />
-              <RemoveButton>
-                <Trash size={16} />
-                remover
-              </RemoveButton>
-            </ActionsButtons>
-          </ActionsContainer>
-          <ItemPrice>R$ 9,90</ItemPrice>
-        </OrderItem>
-
-        <OrderItem>
-          <img src="/assets/Americano.svg" alt="Americano" />
-          <ActionsContainer>
-            <p>Expresso Tradicional</p>
-            <ActionsButtons>
-              <QuantityButton />
-              <RemoveButton>
-                <Trash size={16} />
-                remover
-              </RemoveButton>
-            </ActionsButtons>
-          </ActionsContainer>
-          <ItemPrice>R$ 9,90</ItemPrice>
-        </OrderItem>
+        {cartProducts &&
+          cartProducts.map((item) => {
+            return (
+              <OrderItem key={item.id}>
+                <img src={`/public/assets/${item.image}`} alt={item.name} />
+                <ActionsContainer>
+                  <p>{item.name}</p>
+                  <ActionsButtons>
+                    <QuantityButton
+                      defaultValue={item.orderedQuantity}
+                      handleUpdateQuantity={(quantity) =>
+                        updateQuantityFromProduct(item.id, quantity)
+                      }
+                    />
+                    <RemoveButton onClick={() => remProductFromCart(item.id)}>
+                      <Trash size={16} />
+                      remover
+                    </RemoveButton>
+                  </ActionsButtons>
+                </ActionsContainer>
+                <ItemPrice>R$ {item.price}</ItemPrice>
+              </OrderItem>
+            )
+          })}
 
         <TotalContainer>
           <div>
