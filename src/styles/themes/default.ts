@@ -20,6 +20,8 @@ export const defaultTheme = {
   'yellow-500': '#DBAC2C',
   'yellow-900': '#C47F17',
 
+  'gradient-yellow-to-purple': 'linear-gradient(to right, #dbac2c, #8047f8)',
+
   inputSM: '60px',
   inputMD: '200px',
   inputLG: '100%',
