@@ -161,7 +161,7 @@ export function Home() {
         <h2>Nossos cafés</h2>
         <CoffeeListContainer>
           {coffeeList.map((coffee) => (
-            <CoffeeListItems coffee={coffee} />
+            <CoffeeListItems key={coffee.id} coffee={coffee} />
           ))}
         </CoffeeListContainer>
       </MainContainer>
