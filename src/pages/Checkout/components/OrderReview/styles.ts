@@ -115,6 +115,11 @@ export const ConfirmButton = styled.button`
   background: ${(props) => props.theme['yellow-500']};
 
   &:hover {
+    color: ${(props) => props.theme.white};
     background: ${(props) => props.theme['yellow-900']};
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 1px ${(props) => props.theme['yellow-900']};
   }
 `
