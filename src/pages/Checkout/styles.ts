@@ -1,0 +1,27 @@
+import styled from 'styled-components'
+
+export const CheckoutContainer = styled.main`
+  width: 100%;
+  max-width: 1120px;
+  margin: 2.5rem auto 9.81rem auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+
+  h3 {
+    font-size: 1.125rem;
+  }
+`
+
+export const FormContainer = styled.form`
+  flex: 1;
+  max-width: 640px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.9375rem;
+`
