@@ -62,7 +62,7 @@ export function OrderReview() {
           </div>
         </TotalContainer>
 
-        <ConfirmButton>confirmar pedido</ConfirmButton>
+        <ConfirmButton type="submit">confirmar pedido</ConfirmButton>
       </OrderItems>
     </OrderContainer>
   )

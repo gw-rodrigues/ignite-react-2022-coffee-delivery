@@ -18,15 +18,15 @@ export function PaymentForm() {
         </div>
       </header>
       <PaymentMethodSelectContainer>
-        <PaymentMethodSelectButton>
+        <PaymentMethodSelectButton type="button">
           <CreditCard size={16} />
           Cartão de crédito
         </PaymentMethodSelectButton>
-        <PaymentMethodSelectButton>
+        <PaymentMethodSelectButton type="button">
           <Bank size={16} />
           cartão de débito
         </PaymentMethodSelectButton>
-        <PaymentMethodSelectButton selected disabled>
+        <PaymentMethodSelectButton type="button" selected disabled>
           <Money size={16} />
           dinheiro
         </PaymentMethodSelectButton>
