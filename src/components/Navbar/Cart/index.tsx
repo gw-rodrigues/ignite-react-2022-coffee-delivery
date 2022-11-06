@@ -5,11 +5,7 @@ import { CartContainer, CartItemsCount } from './styles'
 
 export function Cart() {
   const { cart } = useContext(CartContext)
-  let cartTotalItems = 0
-
-  useEffect(() => {
-    cartTotalItems = cart.reduce((total, item) => total + item.quantity, 0)
-  }, [cart])
+  const cartTotalItems = cart.reduce((total, item) => total + item.quantity, 0)
 
   return (
     <CartContainer>
