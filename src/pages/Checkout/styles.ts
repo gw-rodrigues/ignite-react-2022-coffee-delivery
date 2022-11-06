@@ -5,17 +5,15 @@ export const CheckoutContainer = styled.main`
   max-width: 1120px;
   margin: 2.5rem auto 9.81rem auto;
 
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 2rem;
-
-  h3 {
-    font-size: 1.125rem;
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
   }
 `
 
-export const FormContainer = styled.form`
+export const FormContainer = styled.div`
   flex: 1;
   max-width: 640px;
 
@@ -24,4 +22,8 @@ export const FormContainer = styled.form`
   align-items: flex-start;
   flex-direction: column;
   gap: 0.9375rem;
+
+  h3 {
+    font-size: 1.125rem;
+  }
 `
