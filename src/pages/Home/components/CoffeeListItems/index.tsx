@@ -9,7 +9,7 @@ interface ICoffeeListItem {
 }
 
 export function CoffeeListItems({
-  coffee: { name, description, price, types, image },
+  coffee: { id, name, description, price, types, image },
 }: ICoffeeListItem) {
   return (
     <CoffeeListItemsContainer>
@@ -23,7 +23,7 @@ export function CoffeeListItems({
       </TypeOfCoffeeList>
       <h3>{name}</h3>
       <p>{description}</p>
-      <CoffeeListItemsBuy />
+      <CoffeeListItemsBuy id={id} />
     </CoffeeListItemsContainer>
   )
 }
