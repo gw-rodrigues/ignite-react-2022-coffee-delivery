@@ -38,6 +38,12 @@ export function OrderReview() {
     setCartProducts(products)
   }, [cart])
 
+  const totalProductsPrice = cartProducts.reduce((total, product) => {
+    return total + Number(product.price) * product.orderedQuantity
+  }, 0)
+  const deliveryPrice = 3.5
+  const totalPrice = totalProductsPrice + deliveryPrice
+
   return (
     <OrderContainer>
       <h3>Cafés selecionados</h3>
@@ -70,15 +76,15 @@ export function OrderReview() {
         <TotalContainer>
           <div>
             <span>Total de itens</span>
-            <span>R$ 29,70</span>
+            <span>R$ {totalProductsPrice.toFixed(2).replace('.', ',')}</span>
           </div>
           <div>
             <span>Entrega</span>
-            <span>R$ 3,50</span>
+            <span>R$ {deliveryPrice.toFixed(2).replace('.', ',')}</span>
           </div>
           <div>
             <span>Total</span>
-            <span>R$ 33,20</span>
+            <span>R$ {totalPrice.toFixed(2).replace('.', ',')}</span>
           </div>
         </TotalContainer>
 
