@@ -23,7 +23,7 @@ export function CoffeeListItems({
       </TypeOfCoffeeList>
       <h3>{name}</h3>
       <p>{description}</p>
-      <CoffeeListItemsBuy id={id} />
+      <CoffeeListItemsBuy id={id} price={price} />
     </CoffeeListItemsContainer>
   )
 }
