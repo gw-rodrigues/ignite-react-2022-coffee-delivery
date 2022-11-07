@@ -1,3 +1,4 @@
+import { useFormContext } from 'react-hook-form'
 import { MapPinLine } from 'phosphor-react'
 import { Input } from '../../components/Input'
 import { AddressContainer } from './styles'
@@ -13,16 +14,49 @@ export function AddressForm() {
         </div>
       </header>
       <section>
-        <Input type="text" placeholder="CEP" inputSize="md" />
-        <Input type="text" placeholder="Rua" />
+        <Input
+          id="cep"
+          type="number"
+          placeholder="CEP"
+          inputSize="md"
+          maxLength={8}
+          minLength={1}
+          required
+        />
+        <Input id="street" type="text" placeholder="Rua" required />
         <div>
-          <Input type="number" placeholder="Número" inputSize="md" />
-          <Input type="text" placeholder="Complemento" optional />
+          <Input
+            id="houseNumber"
+            type="number"
+            placeholder="Número"
+            inputSize="md"
+            required
+          />
+          <Input
+            id="houseComplement"
+            type="text"
+            placeholder="Complemento"
+            optional
+          />
         </div>
         <div>
-          <Input type="text" placeholder="Bairro" inputSize="md" />
-          <Input type="text" placeholder="Cidade" />
-          <Input type="text" placeholder="UF" inputSize="sm" />
+          <Input
+            id="district"
+            type="text"
+            placeholder="Bairro"
+            inputSize="md"
+            required
+          />
+          <Input id="city" type="text" placeholder="Cidade" required />
+          <Input
+            id="uf"
+            type="number"
+            placeholder="UF"
+            inputSize="sm"
+            min={1}
+            max={26}
+            required
+          />
         </div>
       </section>
     </AddressContainer>
