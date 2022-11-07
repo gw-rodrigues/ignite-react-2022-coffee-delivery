@@ -42,7 +42,7 @@ export function OrderReview() {
     return total + Number(product.price) * product.orderedQuantity
   }, 0)
   const deliveryPrice = 3.5
-  const totalPrice = totalProductsPrice + deliveryPrice
+  const totalPrice = totalProductsPrice ? totalProductsPrice + deliveryPrice : 0
 
   return (
     <OrderContainer>
