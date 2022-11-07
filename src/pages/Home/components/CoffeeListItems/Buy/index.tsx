@@ -12,9 +12,10 @@ import {
 
 interface ICoffeeListItemsBuyProps {
   id: string
+  price: string
 }
 
-export function CoffeeListItemsBuy({ id }: ICoffeeListItemsBuyProps) {
+export function CoffeeListItemsBuy({ id, price }: ICoffeeListItemsBuyProps) {
   const { addProductToCart } = useContext(CartContext)
 
   const [quantity, setQuantity] = useState(1)
@@ -27,7 +28,7 @@ export function CoffeeListItemsBuy({ id }: ICoffeeListItemsBuyProps) {
     <BuyContainer>
       <PriceContainer>
         <span>R$</span>
-        <span>9,90</span>
+        <span>{price.replace('.', ',')}</span>
       </PriceContainer>
       <ActionsContainer>
         <QuantityButton defaultValue={1} handleUpdateQuantity={setQuantity} />
