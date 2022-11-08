@@ -19,8 +19,8 @@ export function AddressForm() {
           type="number"
           placeholder="CEP"
           inputSize="md"
-          maxLength={8}
-          minLength={1}
+          max={99999999}
+          min={11111111}
           required
         />
         <Input id="street" type="text" placeholder="Rua" required />
