@@ -7,9 +7,10 @@ import { OrderReview } from './components/OrderReview'
 import { CheckoutContainer, FormContainer } from './styles'
 
 const orderFormValidationSchema = zod.object({
-  cep: zod.number(),
-  // .min(8, 'CEP no mínimo 8 números.')
-  // .max(99999999, 'CEP no máximo 8 números.'),
+  cep: zod
+    .number()
+    .min(11111111, 'CEP no mínimo 8 números.')
+    .max(99999999, 'CEP no máximo 8 números.'),
   street: zod.string().min(1, 'Endereço é obrigatória.'),
   houseNumber: zod.number().min(1, 'Número da casa é obrigatória.'),
   houseComplement: zod.string().optional(),
@@ -17,8 +18,8 @@ const orderFormValidationSchema = zod.object({
   city: zod.string().min(1, 'Cidade é obrigatória.'),
   uf: zod
     .number()
-    .min(2, 'UF no mínimo 2 números.')
-    .max(2, 'UF no máximo 2 números.'),
+    .min(1, 'UF no mínimo 2 números.')
+    .max(26, 'UF no máximo 2 números.'),
 })
 
 type TOrderFormData = zod.infer<typeof orderFormValidationSchema>
@@ -26,15 +27,15 @@ type TOrderFormData = zod.infer<typeof orderFormValidationSchema>
 export function Checkout() {
   const orderForm = useForm<TOrderFormData>({
     resolver: zodResolver(orderFormValidationSchema),
-    // defaultValues: {
-    //   cep: 0,
-    //   street: '',
-    //   houseNumber: 0,
-    //   houseComplement: '',
-    //   district: '',
-    //   city: '',
-    //   uf: 0,
-    // },
+    defaultValues: {
+      //cep: 0,
+      street: '',
+      //houseNumber: 0,
+      houseComplement: '',
+      district: '',
+      city: '',
+      //uf: 0,
+    },
   })
 
   const {
@@ -48,6 +49,7 @@ export function Checkout() {
 
   function handleFormSubmit(data: TOrderFormData) {
     console.log(data)
+    reset()
   }
 
   return (
