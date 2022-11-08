@@ -1,5 +1,6 @@
 import { InputHTMLAttributes } from 'react'
 import { useFormContext } from 'react-hook-form'
+import { number } from 'zod'
 import { InputElement, InputOptionalElement } from './styles'
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -15,9 +16,18 @@ export function Input({
   ...rest
 }: IInputProps) {
   const { register } = useFormContext()
+
+  /**
+   * Must use like that if not will not loading the register properties correctly. Can cause some bugs with zod validation.
+   */
+  const inputRegister = register(id, {
+    valueAsNumber: rest.type === 'number' ? true : false,
+    valueAsDate: rest.type === 'date' ? true : false,
+  })
+
   return optional ? (
     <InputOptionalElement inputSize={inputSize}>
-      <input {...rest} {...register(id)} />
+      <input {...inputRegister} {...rest} />
       <span>Opcional</span>
     </InputOptionalElement>
   ) : (
