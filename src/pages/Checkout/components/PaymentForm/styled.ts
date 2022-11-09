@@ -27,31 +27,54 @@ export const PaymentMethodContainer = styled.div`
   }
 `
 
-export const PaymentMethodSelectContainer = styled.div`
+export const PaymentMethodSelectContainer = styled.fieldset`
   margin-top: 2rem;
   display: flex;
   gap: 0.75rem;
+  border: none;
 `
+
 interface IButtonSelected {
   selected?: boolean
 }
 
-export const PaymentMethodSelectButton = styled.button<IButtonSelected>`
+export const PaymentMethodSelectButton = styled.div<IButtonSelected>`
   flex: 1;
-  height: 51px;
-  padding: 16px;
+  position: relative;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  svg {
-    color: ${(props) => props.theme['purple-500']};
+  input[type='radio'] {
+    position: absolute;
+    left: -100vw;
   }
 
-  border: 1px solid
-    ${(props) => (props.selected ? props.theme['purple-500'] : 'transparent')};
+  label {
+    width: 178.67px;
+    height: 51px;
+    padding: 16px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    line-height: 1.7;
+    border-radius: 6px;
 
-  background: ${(props) =>
-    props.selected ? props.theme['purple-100'] : props.theme['gray-300']};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+
+    border: 1px solid
+      ${(props) => (props.selected ? props.theme['purple-500'] : 'transparent')};
+
+    background: ${(props) =>
+      props.selected ? props.theme['purple-100'] : props.theme['gray-300']};
+
+    transition: border-color 0.2s;
+
+    &:hover {
+      border-color: ${(props) => props.theme['purple-500']};
+    }
+
+    svg {
+      color: ${(props) => props.theme['purple-500']};
+    }
+  }
 `
