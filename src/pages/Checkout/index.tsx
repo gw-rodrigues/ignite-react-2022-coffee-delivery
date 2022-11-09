@@ -6,6 +6,12 @@ import { PaymentForm } from './components/PaymentForm'
 import { OrderReview } from './components/OrderReview'
 import { CheckoutContainer, FormContainer } from './styles'
 
+export enum EPaymentMethods {
+  credit = 'credit',
+  debit = 'debit',
+  money = 'money',
+}
+
 const orderFormValidationSchema = zod.object({
   cep: zod
     .number()
@@ -20,6 +26,7 @@ const orderFormValidationSchema = zod.object({
     .number()
     .min(1, 'UF no mínimo 2 números.')
     .max(26, 'UF no máximo 2 números.'),
+  paymentMethod: zod.nativeEnum(EPaymentMethods),
 })
 
 type TOrderFormData = zod.infer<typeof orderFormValidationSchema>
@@ -28,13 +35,14 @@ export function Checkout() {
   const orderForm = useForm<TOrderFormData>({
     resolver: zodResolver(orderFormValidationSchema),
     defaultValues: {
-      //cep: 0,
-      street: '',
-      //houseNumber: 0,
-      houseComplement: '',
-      district: '',
-      city: '',
-      //uf: 0,
+      cep: undefined,
+      street: undefined,
+      houseNumber: undefined,
+      houseComplement: undefined,
+      district: undefined,
+      city: undefined,
+      uf: undefined,
+      paymentMethod: undefined,
     },
   })
 
@@ -48,9 +56,11 @@ export function Checkout() {
   console.log(errors)
 
   function handleFormSubmit(data: TOrderFormData) {
-    console.log(data)
-    reset()
+    // console.log(data)
+    // reset()
   }
+
+  console.log(JSON.stringify(orderForm.watch(), null, 2))
 
   return (
     <CheckoutContainer>
@@ -59,11 +69,10 @@ export function Checkout() {
           <h3>Complete seu pedido</h3>
           <FormProvider {...orderForm}>
             <AddressForm />
+            <PaymentForm />
           </FormProvider>
-          <PaymentForm />
         </FormContainer>
         <OrderReview />
-        <button type="submit">teste</button>
       </form>
     </CheckoutContainer>
   )
