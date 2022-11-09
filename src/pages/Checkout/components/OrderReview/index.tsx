@@ -52,7 +52,7 @@ export function OrderReview() {
           cartProducts.map((item) => {
             return (
               <OrderItem key={item.id}>
-                <img src={`/public/assets/${item.image}`} alt={item.name} />
+                <img src={`/assets/${item.image}`} alt={item.name} />
                 <ActionsContainer>
                   <p>{item.name}</p>
                   <ActionsButtons>
