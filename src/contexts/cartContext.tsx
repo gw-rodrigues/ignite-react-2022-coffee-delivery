@@ -1,16 +1,12 @@
 import { createContext, ReactNode, useState } from 'react'
-import { string } from 'zod'
+import { TCoffee } from '../pages/Home'
 
-export type TCart = {
-  id: string
-  quantity: number
-}
+export type TCartProduct = TCoffee & { orderQuantity: number }
 
 interface ICartContext {
-  cart: TCart[]
+  cart: TCartProduct[]
   updateQuantityFromProduct: (id: string, quantity: number) => void
-
-  addProductToCart: (id: string, quantity: number) => void
+  addProductToCart: (product: TCartProduct) => void
   remProductFromCart: (id: string) => void
 }
 
@@ -21,7 +17,7 @@ interface ICartContextProvider {
 }
 
 export function CartContextProvider({ children }: ICartContextProvider) {
-  const [cart, setCart] = useState<TCart[]>([])
+  const [cart, setCart] = useState<TCartProduct[]>([])
 
   function updateQuantityFromProduct(id: string, quantity: number) {
     const newCart = cart.map((item) => {
@@ -33,14 +29,14 @@ export function CartContextProvider({ children }: ICartContextProvider) {
     setCart(newCart)
   }
 
-  function addProductToCart(id: string, quantity: number) {
-    const hasProductOnCart = cart.some((item) => item.id === id)
+  function addProductToCart(product: TCartProduct) {
+    const hasProductOnCart = cart.some((item) => item.id === product.id)
     if (hasProductOnCart) {
-      updateQuantityFromProduct(id, quantity)
+      updateQuantityFromProduct(product.id, product.quantity)
       return
     }
 
-    setCart((prev) => [...prev, { id, quantity }])
+    setCart((prev) => [...prev, product])
   }
 
   function remProductFromCart(id: string) {
