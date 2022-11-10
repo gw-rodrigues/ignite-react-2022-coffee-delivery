@@ -8,22 +8,20 @@ interface ICoffeeListItem {
   coffee: TCoffee
 }
 
-export function CoffeeListItems({
-  coffee: { id, name, description, price, types, image },
-}: ICoffeeListItem) {
+export function CoffeeListItems({ coffee }: ICoffeeListItem) {
   return (
     <CoffeeListItemsContainer>
       <figure>
-        <img src={`/assets/${image}`} alt="" />
+        <img src={`/assets/${coffee.image}`} alt="" />
       </figure>
       <TypeOfCoffeeList>
-        {types.map((type) => (
+        {coffee.types.map((type) => (
           <li key={type}>{type}</li>
         ))}
       </TypeOfCoffeeList>
-      <h3>{name}</h3>
-      <p>{description}</p>
-      <CoffeeListItemsBuy id={id} price={price} />
+      <h3>{coffee.name}</h3>
+      <p>{coffee.description}</p>
+      <CoffeeListItemsBuy coffee={coffee} />
     </CoffeeListItemsContainer>
   )
 }
