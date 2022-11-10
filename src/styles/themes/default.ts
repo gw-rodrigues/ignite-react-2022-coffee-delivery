@@ -22,7 +22,7 @@ export const defaultTheme = {
 
   'gradient-yellow-to-purple': 'linear-gradient(to right, #dbac2c, #8047f8)',
 
-  inputSM: '60px',
+  inputSM: '70px',
   inputMD: '200px',
   inputLG: '100%',
 }
