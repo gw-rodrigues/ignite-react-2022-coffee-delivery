@@ -6,7 +6,10 @@ import { CartContainer, CartItemsCount } from './styles'
 
 export function Cart() {
   const { cart } = useContext(CartContext)
-  const cartTotalItems = cart.reduce((total, item) => total + item.quantity, 0)
+  const cartTotalItems = cart.reduce(
+    (total, item) => total + item.orderQuantity,
+    0,
+  )
 
   return (
     <NavLink to="/checkout">
