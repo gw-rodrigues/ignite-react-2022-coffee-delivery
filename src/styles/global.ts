@@ -43,7 +43,7 @@ export const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme['gray-900']};
   }
 
-  input, textarea {
+  input, textarea, select {
     font-weight: 400;
     font-size: 0.875rem;
     line-height: 1.3;
@@ -55,13 +55,13 @@ export const GlobalStyle = createGlobalStyle`
     transition: border-color .2s, color .2s;
   }
 
-  input:focus, textarea:focus {
+  input:focus, textarea:focus, select:focus {
     border-color: ${(props) => props.theme['yellow-900']};
     color: ${(props) => props.theme['gray-700']};
     box-shadow: none;
   }
 
-   input:valid, textarea:valid {
+   input:valid, textarea:valid, select:valid {
     color: ${(props) => props.theme['gray-700']};
   }
 
