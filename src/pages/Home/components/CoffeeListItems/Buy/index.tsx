@@ -1,7 +1,7 @@
 import { ShoppingCart } from 'phosphor-react'
 import { useContext, useState } from 'react'
+import { TCoffee } from '../../..'
 import { QuantityButton } from '../../../../../components/QuantityButton'
-import { QuantitySelect } from '../../../../../components/QuantityButton/styles'
 import { CartContext } from '../../../../../contexts/cartContext'
 import {
   ActionsContainer,
@@ -11,27 +11,28 @@ import {
 } from './styles'
 
 interface ICoffeeListItemsBuyProps {
-  id: string
-  price: string
+  coffee: TCoffee
 }
 
-export function CoffeeListItemsBuy({ id, price }: ICoffeeListItemsBuyProps) {
+export function CoffeeListItemsBuy({ coffee }: ICoffeeListItemsBuyProps) {
   const { addProductToCart } = useContext(CartContext)
-
-  const [quantity, setQuantity] = useState(1)
+  const [orderQuantity, setOrderQuantity] = useState(1)
 
   function handleAddProductToCart() {
-    addProductToCart(id, quantity)
+    addProductToCart({ ...coffee, orderQuantity })
   }
 
   return (
     <BuyContainer>
       <PriceContainer>
         <span>R$</span>
-        <span>{price.replace('.', ',')}</span>
+        <span>{coffee.price.replace('.', ',')}</span>
       </PriceContainer>
       <ActionsContainer>
-        <QuantityButton defaultValue={1} handleUpdateQuantity={setQuantity} />
+        <QuantityButton
+          defaultValue={1}
+          handleUpdateQuantity={setOrderQuantity}
+        />
         <BuyButton onClick={handleAddProductToCart}>
           <ShoppingCart weight="fill" size={22} />
         </BuyButton>
