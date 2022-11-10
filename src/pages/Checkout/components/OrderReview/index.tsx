@@ -2,8 +2,6 @@ import { Trash } from 'phosphor-react'
 import { useContext, useEffect, useState } from 'react'
 import { QuantityButton } from '../../../../components/QuantityButton'
 import { CartContext } from '../../../../contexts/cartContext'
-import { getCoffee } from '../../../../hooks/coffeeData'
-import { TCoffee } from '../../../Home'
 
 import {
   ActionsButtons,
@@ -17,29 +15,13 @@ import {
   TotalContainer,
 } from './styles'
 
-interface IOrderReview extends TCoffee {
-  orderedQuantity: number
-}
-
 export function OrderReview() {
   const { cart, updateQuantityFromProduct, remProductFromCart } =
     useContext(CartContext)
 
-  const [cartProducts, setCartProducts] = useState<IOrderReview[]>([])
-
-  useEffect(() => {
-    const products: IOrderReview[] = cart.map((item) => {
-      let product: any = getCoffee(item.id)
-      return {
-        ...product,
-        orderedQuantity: item.quantity,
-      }
-    })
-    setCartProducts(products)
-  }, [cart])
-
-  const totalProductsPrice = cartProducts.reduce((total, product) => {
-    return total + Number(product.price) * product.orderedQuantity
+  const totalProductsPrice = cart.reduce((total, product) => {
+    console.log(product.orderQuantity)
+    return total + Number(product.price) * product.orderQuantity
   }, 0)
   const deliveryPrice = 3.5
   const totalPrice = totalProductsPrice ? totalProductsPrice + deliveryPrice : 0
@@ -48,8 +30,8 @@ export function OrderReview() {
     <OrderContainer>
       <h3>Cafés selecionados</h3>
       <OrderItems>
-        {cartProducts &&
-          cartProducts.map((item) => {
+        {cart &&
+          cart.map((item) => {
             return (
               <OrderItem key={item.id}>
                 <img src={`/assets/${item.image}`} alt={item.name} />
@@ -57,7 +39,7 @@ export function OrderReview() {
                   <p>{item.name}</p>
                   <ActionsButtons>
                     <QuantityButton
-                      defaultValue={item.orderedQuantity}
+                      defaultValue={item.orderQuantity}
                       handleUpdateQuantity={(quantity) =>
                         updateQuantityFromProduct(item.id, quantity)
                       }
