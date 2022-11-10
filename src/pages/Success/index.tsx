@@ -9,8 +9,20 @@ import {
 
 import deliveryImage from '../../assets/Bike-delivery.svg'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { useLocation } from 'react-router-dom'
 
 export function Success() {
+  const location = useLocation()
+  const {
+    street,
+    houseNumber,
+    houseComplement,
+    district,
+    city,
+    uf,
+    paymentMethod,
+  } = location.state
+  
   return (
     <SuccessContainer>
       <header>
@@ -26,9 +38,14 @@ export function Success() {
               </StatusIcon>
               <div>
                 <p>
-                  Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                  Entrega em{' '}
+                  <strong>
+                    {street}, {houseNumber} {houseComplement}
+                  </strong>
                 </p>
-                <p>Farrapos - Porto Alegre, RS</p>
+                <p>
+                  {district} - {city}, {uf}
+                </p>
               </div>
             </StatusInnerContent>
             <StatusInnerContent>
@@ -49,7 +66,7 @@ export function Success() {
               <div>
                 <p>Pagamento na entrega</p>
                 <p>
-                  <strong>Cartão de Crédito</strong>
+                  <strong>{paymentMethod}</strong>
                 </p>
               </div>
             </StatusInnerContent>
