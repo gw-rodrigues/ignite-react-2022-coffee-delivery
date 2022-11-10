@@ -1,12 +1,24 @@
-import { FormProvider, FormState, useForm, useFormState } from 'react-hook-form'
+import { FormProvider, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
+import { useNavigate } from 'react-router-dom'
+
 import { AddressForm } from './components/AddressForm'
 import { PaymentForm } from './components/PaymentForm'
 import { OrderReview } from './components/OrderReview'
-import { CheckoutContainer, FormContainer } from './styles'
 
-export enum EPaymentMethods {
+import { CheckoutContainer, FormContainer } from './styles'
+import { registeOrder } from '../../hooks/coffeeData'
+import { useContext } from 'react'
+import { CartContext } from '../../contexts/cartContext'
+
+export const listPaymentMethods = {
+  credit: 'Cartão de crédito',
+  debit: 'cartão de débito',
+  money: 'dinheiro',
+}
+
+enum enumPaymentMethods {
   credit = 'credit',
   debit = 'debit',
   money = 'money',
@@ -23,13 +35,13 @@ const orderFormValidationSchema = zod.object({
   district: zod.string().min(1, 'Bairro é obrigatória.'),
   city: zod.string().min(1, 'Cidade é obrigatória.'),
   uf: zod
-    .number()
-    .min(1, 'UF no mínimo 2 números.')
-    .max(26, 'UF no máximo 2 números.'),
-  paymentMethod: zod.nativeEnum(EPaymentMethods),
+    .string()
+    .min(1, 'UF no mínimo 1 carácter.')
+    .max(2, 'UF no máximo 2 carácteres.'),
+  paymentMethod: zod.nativeEnum(enumPaymentMethods),
 })
 
-type TOrderFormData = zod.infer<typeof orderFormValidationSchema>
+export type TOrderFormData = zod.infer<typeof orderFormValidationSchema>
 
 export function Checkout() {
   const orderForm = useForm<TOrderFormData>({
@@ -55,12 +67,19 @@ export function Checkout() {
 
   console.log(errors)
 
-  function handleFormSubmit(data: TOrderFormData) {
-    // console.log(data)
-    // reset()
-  }
+  const navigate = useNavigate()
+  const { cart } = useContext(CartContext)
 
-  console.log(JSON.stringify(orderForm.watch(), null, 2))
+  function handleFormSubmit(form: TOrderFormData) {
+    const orderPrice = {
+      totalPriceItems: '',
+      deliveryPrice: '',
+      totalPrice: '',
+    }
+    registeOrder({ form, cart, orderPrice })
+    reset()
+    navigate('/success', { replace: true, state: { ...form } })
+  }
 
   return (
     <CheckoutContainer>

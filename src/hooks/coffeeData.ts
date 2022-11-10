@@ -1,4 +1,5 @@
-import { TCoffee } from '../pages/Home'
+import { TCartProduct } from '../contexts/cartContext'
+import { TOrderFormData } from '../pages/Checkout'
 
 const coffeeList = [
   {
@@ -140,4 +141,19 @@ export function getCoffeeList() {
 export function getCoffee(id: string) {
   const coffee = coffeeList.find((coffee) => coffee.id === id)
   return coffee
+}
+
+interface IRegisteOrder {
+  cart: TCartProduct[]
+  form: TOrderFormData
+  orderPrice: {
+    totalPriceItems: string
+    deliveryPrice: string
+    totalPrice: string
+  }
+}
+export function registeOrder({ cart, form, orderPrice }: IRegisteOrder) {
+  console.log(cart)
+  console.log(form)
+  console.log(orderPrice)
 }
