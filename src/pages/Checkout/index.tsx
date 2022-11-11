@@ -18,7 +18,7 @@ export const listPaymentMethods = {
   money: 'dinheiro',
 }
 
-enum enumPaymentMethods {
+export enum EPaymentMethods {
   credit = 'credit',
   debit = 'debit',
   money = 'money',
@@ -38,7 +38,7 @@ const orderFormValidationSchema = zod.object({
     .string()
     .min(1, 'UF no mínimo 1 carácter.')
     .max(2, 'UF no máximo 2 carácteres.'),
-  paymentMethod: zod.nativeEnum(enumPaymentMethods),
+  paymentMethod: zod.nativeEnum(EPaymentMethods),
 })
 
 export type TOrderFormData = zod.infer<typeof orderFormValidationSchema>
@@ -71,6 +71,8 @@ export function Checkout() {
   const { cart } = useContext(CartContext)
 
   function handleFormSubmit(form: TOrderFormData) {
+    if (!cart) navigate('/')
+
     const orderPrice = {
       totalPriceItems: '',
       deliveryPrice: '',
