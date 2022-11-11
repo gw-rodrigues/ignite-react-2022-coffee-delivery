@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
+
 import {
   PaymentMethodContainer,
   PaymentMethodSelectButton,
   PaymentMethodSelectContainer,
 } from './styled'
-
 import { EPaymentMethods } from '../..'
 
 type TPaymentMethods = keyof typeof EPaymentMethods | undefined
