@@ -55,6 +55,7 @@ export const PaymentMethodSelectButton = styled.div<IButtonSelected>`
     font-size: 0.75rem;
     line-height: 1.7;
     border-radius: 6px;
+    text-transform: uppercase;
 
     display: flex;
     justify-content: center;
