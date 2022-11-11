@@ -1,3 +1,8 @@
+import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { useLocation } from 'react-router-dom'
+import { listPaymentMethods } from '../Checkout'
+
+import deliveryImage from '../../assets/Bike-delivery.svg'
 import {
   StatusContainer,
   StatusIcon,
@@ -6,10 +11,6 @@ import {
   SuccessContainer,
   SuccessContent,
 } from './styles'
-
-import deliveryImage from '../../assets/Bike-delivery.svg'
-import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
-import { useLocation } from 'react-router-dom'
 
 export function Success() {
   const location = useLocation()
@@ -22,7 +23,7 @@ export function Success() {
     uf,
     paymentMethod,
   } = location.state
-  
+
   return (
     <SuccessContainer>
       <header>
@@ -66,7 +67,12 @@ export function Success() {
               <div>
                 <p>Pagamento na entrega</p>
                 <p>
-                  <strong>{paymentMethod}</strong>
+                  <strong>
+                    {paymentMethod &&
+                      listPaymentMethods[
+                        paymentMethod as keyof typeof listPaymentMethods
+                      ]}
+                  </strong>
                 </p>
               </div>
             </StatusInnerContent>
