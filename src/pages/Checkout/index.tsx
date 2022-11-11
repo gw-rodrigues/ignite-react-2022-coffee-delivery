@@ -13,9 +13,9 @@ import { useContext } from 'react'
 import { CartContext } from '../../contexts/cartContext'
 
 export const listPaymentMethods = {
-  credit: 'Cartão de crédito',
-  debit: 'cartão de débito',
-  money: 'dinheiro',
+  credit: 'Cartão de Crédito',
+  debit: 'Cartão de Débito',
+  money: 'Dinheiro',
 }
 
 export enum EPaymentMethods {
