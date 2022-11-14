@@ -1,5 +1,11 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useEffect, useReducer } from 'react'
 import { TCoffee } from '../pages/Home'
+import {
+  addProductAction,
+  removeProductAction,
+  updateProductQuantityAction,
+} from '../reducers/cart/actions'
+import { cartReducer } from '../reducers/cart/cartReducer'
 
 export type TCartProduct = TCoffee & { orderQuantity: number }
 
@@ -17,31 +23,42 @@ interface ICartContextProvider {
 }
 
 export function CartContextProvider({ children }: ICartContextProvider) {
-  const [cart, setCart] = useState<TCartProduct[]>([])
+  const [cartState, dispatch] = useReducer(cartReducer, { cart: [] }, () => {
+    const storeStateJSON = localStorage.getItem(
+      '@ignite-coffee:cart-state-1.0.0',
+    )
 
-  function updateQuantityFromProduct(id: string, quantity: number) {
-    const newCart = cart.map((item) => {
-      if (item.id === id) {
-        item.quantity = quantity
-      }
-      return item
-    })
-    setCart(newCart)
-  }
+    if (storeStateJSON) {
+      return JSON.parse(storeStateJSON)
+    }
+    return {
+      cart: [],
+    }
+  })
+
+  const { cart } = cartState
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(cartState)
+    localStorage.setItem('@ignite-coffee:cart-state-1.0.0', stateJSON)
+  }, [cartState])
 
   function addProductToCart(product: TCartProduct) {
     const hasProductOnCart = cart.some((item) => item.id === product.id)
     if (hasProductOnCart) {
-      updateQuantityFromProduct(product.id, product.quantity)
+      dispatch(updateProductQuantityAction(product.id, product.orderQuantity))
       return
     }
 
-    setCart((prev) => [...prev, product])
+    dispatch(addProductAction(product))
+  }
+
+  function updateQuantityFromProduct(id: string, orderQuantity: number) {
+    dispatch(updateProductQuantityAction(id, orderQuantity))
   }
 
   function remProductFromCart(id: string) {
-    const newCart = cart.filter((item) => item.id !== id)
-    setCart(newCart)
+    dispatch(removeProductAction(id))
   }
 
   return (
