@@ -2,6 +2,7 @@ import { createContext, ReactNode, useEffect, useReducer } from 'react'
 import { TCoffee } from '../pages/Home'
 import {
   addProductAction,
+  cleanCartAction,
   removeProductAction,
   updateProductQuantityAction,
 } from '../reducers/cart/actions'
@@ -14,6 +15,7 @@ interface ICartContext {
   updateQuantityFromProduct: (id: string, quantity: number) => void
   addProductToCart: (product: TCartProduct) => void
   remProductFromCart: (id: string) => void
+  cleanCart: () => void
 }
 
 export const CartContext = createContext({} as ICartContext)
@@ -61,6 +63,10 @@ export function CartContextProvider({ children }: ICartContextProvider) {
     dispatch(removeProductAction(id))
   }
 
+  function cleanCart() {
+    dispatch(cleanCartAction())
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -68,6 +74,7 @@ export function CartContextProvider({ children }: ICartContextProvider) {
         updateQuantityFromProduct,
         addProductToCart,
         remProductFromCart,
+        cleanCart,
       }}
     >
       {children}
