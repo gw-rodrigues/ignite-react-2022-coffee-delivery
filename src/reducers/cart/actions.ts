@@ -4,6 +4,7 @@ export enum EActionsTypes {
   ADD_PRODUCT = 'ADD_PRODUCT',
   UPDATE_PRODUCT_QUANTITY = 'UPDATE_PRODUCT_QUANTITY',
   REMOVE_PRODUCT = 'REMOVE_PRODUCT',
+  CLEAN_CART = 'CLEAN_CART',
 }
 
 export function addProductAction(newProduct: TCartProduct) {
@@ -24,5 +25,11 @@ export function removeProductAction(id: string) {
   return {
     type: EActionsTypes.REMOVE_PRODUCT,
     payload: { id },
+  }
+}
+
+export function cleanCartAction() {
+  return {
+    type: EActionsTypes.CLEAN_CART,
   }
 }
