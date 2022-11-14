@@ -68,19 +68,23 @@ export function Checkout() {
   console.log(errors)
 
   const navigate = useNavigate()
-  const { cart } = useContext(CartContext)
+  const { cart, cleanCart } = useContext(CartContext)
 
   function handleFormSubmit(form: TOrderFormData) {
-    if (!cart) navigate('/')
-
     const orderPrice = {
       totalPriceItems: '',
       deliveryPrice: '',
       totalPrice: '',
     }
-    registeOrder({ form, cart, orderPrice })
-    reset()
-    navigate('/success', { replace: true, state: { ...form } })
+
+    if (cart.length === 0) {
+      navigate('/')
+    } else {
+      registeOrder({ form, cart, orderPrice })
+      cleanCart()
+      reset()
+      navigate('/success', { replace: true, state: { ...form } })
+    }
   }
 
   return (
