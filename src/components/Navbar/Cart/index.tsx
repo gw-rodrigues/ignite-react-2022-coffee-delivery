@@ -1,11 +1,12 @@
 import { ShoppingCart } from 'phosphor-react'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { CartContext } from '../../../contexts/cartContext'
 import { CartContainer, CartItemsCount } from './styles'
 
 export function Cart() {
   const { cart } = useContext(CartContext)
+
   const cartTotalItems = cart.reduce(
     (total, item) => total + item.orderQuantity,
     0,
