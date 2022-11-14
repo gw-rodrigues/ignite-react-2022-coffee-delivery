@@ -8,7 +8,7 @@ interface ICartState {
 
 interface IActionReceived {
   type: keyof typeof EActionsTypes
-  payload: any
+  payload?: any
 }
 
 export function cartReducer(state: ICartState, action: IActionReceived) {
@@ -29,6 +29,11 @@ export function cartReducer(state: ICartState, action: IActionReceived) {
     case EActionsTypes.REMOVE_PRODUCT:
       return {
         cart: state.cart.filter((item) => item.id !== action.payload.id),
+      }
+
+    case EActionsTypes.CLEAN_CART:
+      return {
+        cart: [],
       }
 
     default:
