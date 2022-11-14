@@ -153,6 +153,7 @@ interface IRegisteOrder {
   }
 }
 export function registeOrder({ cart, form, orderPrice }: IRegisteOrder) {
+  console.log('Order:')
   console.log(cart)
   console.log(form)
   console.log(orderPrice)
