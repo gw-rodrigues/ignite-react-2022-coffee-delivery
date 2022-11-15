@@ -11,6 +11,7 @@ export const CoffeeListItemsContainer = styled.li`
   align-items: center;
 
   margin-bottom: 0.5rem;
+  border: 1px solid transparent;
 
   figure {
     position: relative;
@@ -34,6 +35,33 @@ export const CoffeeListItemsContainer = styled.li`
     text-align: center;
     font-size: 0.875rem;
     color: ${(props) => props.theme['gray-600']};
+  }
+
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: ${(props) => props.theme['gray-600']};
+  }
+
+  &:hover figure img {
+    animation: spin 10s linear infinite;
+  }
+
+  @-moz-keyframes spin {
+    100% {
+      -moz-transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  @keyframes spin {
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
   }
 `
 
