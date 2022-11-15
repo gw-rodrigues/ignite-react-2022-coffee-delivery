@@ -7,7 +7,7 @@ import {
 } from './styles'
 
 export function Location() {
-  const [isHidden, setIsHidden] = useState(false)
+  const [isHidden, setIsHidden] = useState(true)
   const [location, setLocation] = useState('Porto Alegre, RS')
 
   function handleSelectShopLocation(e: MouseEvent<HTMLButtonElement>) {
