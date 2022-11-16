@@ -78,7 +78,9 @@ export function Success() {
             </StatusInnerContent>
           </StatusInnerContainer>
         </StatusContainer>
-        <img src={deliveryImage} alt="Bike delivery" />
+        <figure>
+          <img src={deliveryImage} alt="Bike delivery" />
+        </figure>
       </SuccessContent>
     </SuccessContainer>
   )
