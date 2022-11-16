@@ -39,6 +39,7 @@ export function Banner() {
           </li>
         </ul>
       </header>
+
       <img src={CoffeeCup} alt="Coffee cup" />
     </BannerContainer>
   )
