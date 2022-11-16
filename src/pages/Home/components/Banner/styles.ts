@@ -8,12 +8,14 @@ export const BannerContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 3.5rem;
 
   background: transparent url('${BannerBG}') no-repeat;
   background-size: cover;
 
   header {
+    width: 100%;
     max-width: 588px;
 
     p {
@@ -23,6 +25,7 @@ export const BannerContainer = styled.div`
     }
 
     ul {
+      max-width: 588px;
       margin-top: 4.125rem;
       width: 100%;
 
@@ -32,7 +35,7 @@ export const BannerContainer = styled.div`
       list-style: none;
 
       li {
-        width: 300px;
+        max-width: 300px;
         margin-bottom: 1.25rem;
 
         display: flex;
@@ -64,6 +67,15 @@ export const BannerContainer = styled.div`
         &:nth-child(4) span {
           background: ${(props) => props.theme['purple-500']};
         }
+
+        @media (max-width: 400px) {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 760px) {
+        grid-template-columns: auto;
+        justify-content: center;
       }
     }
   }
@@ -72,6 +84,11 @@ export const BannerContainer = styled.div`
     max-width: 476px;
     width: 100%;
     height: auto;
+  }
+
+  @media (max-width: 760px) {
+    padding: 2rem;
+    text-align: center;
   }
 `
 

@@ -10,11 +10,13 @@ export const CheckoutContainer = styled.main`
     justify-content: center;
     align-items: flex-start;
     gap: 2rem;
+    flex-wrap: wrap;
   }
 `
 
 export const FormContainer = styled.div`
-  flex: 1;
+  flex: 1 0 100%;
+  width: 100%;
   max-width: 640px;
 
   display: flex;
@@ -25,5 +27,9 @@ export const FormContainer = styled.div`
 
   h3 {
     font-size: 1.125rem;
+  }
+
+  @media (max-width: 760px) {
+    padding: 1rem;
   }
 `

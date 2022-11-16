@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const LocalizationContainer = styled.div`
-  display: relative;
+  position: relative;
 `
 
 export const LocalizationButton = styled.button`
@@ -28,6 +28,10 @@ export const LocalizationButton = styled.button`
   svg {
     fill: ${(props) => props.theme['purple-500']};
   }
+
+  @media (max-width: 400px) {
+    font-size: 0.65rem;
+  }
 `
 
 interface ILocationListIsHiddenProps {
@@ -35,22 +39,33 @@ interface ILocationListIsHiddenProps {
 }
 
 export const LocalizationList = styled.div<ILocationListIsHiddenProps>`
-  max-width: 250px;
-  min-height: 100px;
+  width: 230px;
   position: absolute;
-  right: 200px;
-  margin-top: 0.5rem;
+  left: -35px;
+  margin-top: 0.3rem;
   padding: 0.5rem;
   border-radius: 6px;
   background: ${(props) => props.theme['gray-200']};
 
   display: ${(props) => (props.hidden ? 'none' : 'grid')};
-  border: 1px solid ${(props) => (props.hidden ? 'transparent' : props.theme['purple-100'])};
+  border: 1px solid
+    ${(props) => (props.hidden ? 'transparent' : props.theme['purple-100'])};
 
   grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
+  gap: 0.4rem;
 
   button {
     font-size: 0.6rem;
+    padding: 1.5rem 0.5rem;
+    border: 1px solid transparent;
+
+    &:hover {
+      background: ${(props) => props.theme['purple-100']};
+      border: 1px solid ${(props) => props.theme['purple-500']};
+    }
+  }
+
+  @media (max-width: 400px) {
+    left: -20px;
   }
 `

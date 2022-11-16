@@ -5,6 +5,10 @@ export const MainContainer = styled.main`
   max-width: 1120px;
   margin: 0 auto;
   margin-bottom: 9.81rem;
+
+  @media (max-width: 1200px) {
+    padding: 2rem;
+  }
 `
 
 export const CoffeeListContainer = styled.ul`
@@ -18,4 +22,8 @@ export const CoffeeListContainer = styled.ul`
 
   flex-wrap: wrap;
   gap: 2rem;
+
+  @media (max-width: 1200px) {
+    justify-content: center;
+  }
 `

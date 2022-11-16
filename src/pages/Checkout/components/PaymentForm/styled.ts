@@ -25,6 +25,10 @@ export const PaymentMethodContainer = styled.div`
       }
     }
   }
+
+  @media (max-width: 760px) {
+    padding: 2.5rem 1rem;
+  }
 `
 
 export const PaymentMethodSelectContainer = styled.fieldset`
@@ -32,6 +36,11 @@ export const PaymentMethodSelectContainer = styled.fieldset`
   display: flex;
   gap: 0.75rem;
   border: none;
+
+  @media (max-width: 650px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 
 interface IButtonSelected {

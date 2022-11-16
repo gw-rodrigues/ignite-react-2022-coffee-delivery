@@ -22,6 +22,14 @@ export const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme['gray-700']};
     font-size: 1rem;
     line-height: 1.3;
+
+    @media (max-width: 760px) {
+      font-size: 0.875rem;
+    }
+
+    @media (max-width: 400px) {
+      font-size: 0.75rem;
+    }
   }
 
   h1, h2, h3{
@@ -35,12 +43,21 @@ export const GlobalStyle = createGlobalStyle`
   h1 {
     font-size: 3rem;
     color: ${(props) => props.theme['gray-900']};
+
+    @media (max-width: 760px) {
+      font-size: 2.5rem;
+    }
+
+    @media (max-width: 400px) {
+      font-size: 2rem;
+    }
   }
 
   h3 {
     font-size: 1.25rem;
     font-weight: 700;
     color: ${(props) => props.theme['gray-900']};
+
   }
 
   input, textarea, select {
@@ -98,5 +115,4 @@ export const GlobalStyle = createGlobalStyle`
   button:disabled {
     cursor:not-allowed;
   }
-
 `

@@ -1,23 +1,34 @@
 import styled from 'styled-components'
 
 export const OrderContainer = styled.div`
-  flex: 1;
+  flex: 1 0 100%;
   max-width: 448px;
+  width: 100%;
 
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
   gap: 0.9375rem;
+
+  @media (max-width: 1150px) {
+    max-width: 640px;
+  }
+  @media (max-width: 760px) {
+    padding: 1rem;
+  }
 `
 
 export const OrderItems = styled.div`
   width: 100%;
-  max-width: 640px;
 
   padding: 2.5rem;
   background: ${(props) => props.theme['gray-100']};
   border-radius: 6px 44px 6px 44px;
+
+  @media (max-width: 760px) {
+    padding: 2.5rem 2rem;
+  }
 `
 
 export const OrderItem = styled.div`
@@ -32,6 +43,11 @@ export const OrderItem = styled.div`
   img {
     width: 64px;
     height: 64px;
+  }
+
+  @media (max-width: 475px) {
+    flex-direction: column;
+    align-items: center;
   }
 `
 

@@ -13,6 +13,7 @@ export const AddressContainer = styled.div`
     svg {
       color: ${(props) => props.theme['yellow-500']};
     }
+
     div {
       padding-top: 0.05rem;
       line-height: 1.3;
@@ -41,6 +42,14 @@ export const AddressContainer = styled.div`
       div {
         flex: 1;
       }
+
+      @media (max-width: 760px) {
+        flex-direction: column;
+      }
     }
+  }
+
+  @media (max-width: 760px) {
+    padding: 2.5rem 1rem;
   }
 `

@@ -15,4 +15,14 @@ export const HeaderContainer = styled.header`
     width: 85px;
     height: auto;
   }
+
+  @media (max-width: 1200px) {
+    padding: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 400px) {
+    justify-content: center;
+  }
 `

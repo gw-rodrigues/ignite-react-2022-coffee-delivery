@@ -8,34 +8,53 @@ export const SuccessContainer = styled.main`
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  flex-wrap: wrap;
 
   header {
-    flex: 1;
+    flex: 1 0 100%;
+  }
+
+  @media (max-width: 1200px) {
+    padding: 0 1rem;
+  }
+
+  @media (max-width: 950px) {
+    align-items: center;
   }
 `
 
 export const SuccessContent = styled.div`
-  flex: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   img {
+    display: block;
     width: 100%;
     max-width: 492px;
     height: auto;
   }
+
+  @media (max-width: 950px) {
+    gap: 1rem;
+    flex-direction: column;
+  }
 `
 
 export const StatusContainer = styled.div`
+  flex: 1;
+  min-width: 400px;
   max-width: 526px;
   width: 100%;
   height: 100%;
-  max-width: 526px;
 
   background: ${(props) => props.theme['gradient-yellow-to-purple']};
   border-radius: 6px 36px;
   padding: 1px;
+
+  @media (max-width: 500px) {
+    min-width: 200px;
+  }
 `
 
 const STATUS_ICON_COLOR = {
@@ -57,6 +76,10 @@ export const StatusInnerContainer = styled.div`
   padding: 2.5rem;
   background: ${(props) => props.theme.white};
   border-radius: inherit;
+
+  @media (max-width: 400px) {
+    padding: 1.5rem;
+  }
 `
 
 export const StatusInnerContent = styled.div`
